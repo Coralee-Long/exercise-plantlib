@@ -1,5 +1,7 @@
 # Plant Library
 
+# Phase 1: MVP
+
 ## 1. Planning Project Structure:
 ```
 PlantLibrary/
@@ -22,8 +24,6 @@ PlantLibrary/
 ├── README.md
 ```
 
----
-
 ## 2. Setting up Plant Class:
 
 ### Direct Filed Access (not-recommended):
@@ -32,7 +32,7 @@ public class Plant {
     public String commonName;
 }
 ```
-    
+
 ### Private Fields with Getter/Setter method:
 ```java
 private class Plant {
@@ -53,8 +53,6 @@ private class Plant {
     }
 ```
 
----
-
 ## 3. Using ArrayList over a normal Array:
 
 ### Arrays:
@@ -74,7 +72,6 @@ plants.add(new Plant(...)); // Keeps growing as needed
 ```
 - The `ArrayList` starts with an initial capacity (default is 10).
 - When the internal array runs out of space, the ArrayList automatically creates a larger array and copies the elements into it. This happens behind the scenes, so you don’t need to worry about resizing.
----
 
 ### 4. Clarification of names and methods:
 When you build a class, these three components often work together:
@@ -101,3 +98,18 @@ When you build a class, these three components often work together:
 
 **2. Improves Code Readability:**
    - It signals to other developers (and yourself) that this method is intended to override a parent class’s method.
+
+---
+
+# Phase 2: Creating basic frontend for user inputs
+
+## 1. Setting up html
+- Create public folder in resources folder for html, css & js
+- Add Spark as a dependency
+```
+<dependency>
+    <groupId>com.sparkjava</groupId>
+    <artifactId>spark-core</artifactId>
+    <version>2.9.4</version>
+</dependency>
+```

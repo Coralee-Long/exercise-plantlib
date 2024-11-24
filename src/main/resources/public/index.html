@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Library</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Plant Library</h1>
+
+    <!-- Table to Display Plants -->
+    <div id="plant-table">
+        <h2>Plant List</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Common Name</th>
+                <th>Scientific Name</th>
+                <th>Genus</th>
+                <th>Category</th>
+                <th>Size (cm)</th>
+                <th>Price (€)</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add Plant Button -->
+    <button id="open-modal">Add Plant</button>
+</div>
+
+<!-- Modal for Adding Plant -->
+<div id="plant-modal" class="modal">
+    <div class="modal-content">
+        <span id="close-modal" class="close">&times;</span>
+        <h2>Add a Plant</h2>
+        <form id="add-plant-form">
+            <label>Common Name:</label>
+            <input type="text" name="commonName" required>
+            <label>Scientific Name:</label>
+            <input type="text" name="scientificName" required>
+            <label>Genus Name:</label>
+            <input type="text" name="genusName" required>
+            <label>Category:</label>
+            <input type="text" name="category" required>
+            <label>Size (cm):</label>
+            <input type="number" name="sizeInCm" required>
+            <label>Approx Price (€):</label>
+            <input type="number" name="approxPrice" step="0.01" required>
+            <button type="submit">Add Plant</button>
+        </form>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+</body>
+</html>

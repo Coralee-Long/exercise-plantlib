@@ -1,9 +1,12 @@
 package com.cora;
 
-import java.time.LocalDate;
+import static spark.Spark.*;
+import com.google.gson.Gson;
 
 public class Main {
     public static void main(String[] args) {
+
+        staticFiles.location("/public"); // Serve static files from src/main/resources/public
 
         // Create a PlantList Object
         PlantList plantList = new PlantList();
@@ -18,11 +21,31 @@ public class Main {
         plantList.addPlant(monkeyLeaf);
         plantList.addPlant(obliqua);
 
-        // List all Plants
+        // Add route to fetch all plants as JSON
+        get("/plants", (req, res) -> {
+            res.type("application/json");
+            return new Gson().toJson(plantList.listPlants());
+        });
+
+        post("/addPlant", (req, res) -> {
+            // Parse the incoming JSON to create a Plant object
+            Plant newPlant = new Gson().fromJson(req.body(), Plant.class);
+
+            // Add the new plant to the PlantList
+            plantList.addPlant(newPlant);
+
+            // Return a success message or the added plant
+            return new Gson().toJson(newPlant);
+        });
+
+        // Print all Plants
         System.out.println("All Plants:");
         for (Plant plant : plantList.listPlants()) {
             System.out.println(plant);
         }
+
+        // Prevent the main thread from terminating
+        awaitInitialization();
 
     }
 }
